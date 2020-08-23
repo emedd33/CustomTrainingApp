@@ -1,19 +1,23 @@
 import 'react-native-gesture-handler';
-import React, { Image } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import HomePage from './src/pages/HomePage/HomePage';
-import HeaderBar from './src/components/Molecules/HeaderBar';
-import Colors from './src/assets/Colors/Colors';
-import HeaderbarStyle from './src/assets/styles/HeaderBarStyle';
+import HomeScreen from './src/screens/HomeScreen/HomeScreen';
+import RoutineScreen from './src/screens/RoutineScreen/RoutineScreen';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import WorkoutScreen from './src/screens/WorkoutScreen/WorkoutScreen';
 
+const Drawer = createDrawerNavigator();
 
-const Stack = createStackNavigator();
 
 function App() {
   return (
-    <HomePage />
-  );
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Routines" component={RoutineScreen} />
+        <Drawer.Screen name="Workouts" component={WorkoutScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>);
 }
 
 export default App;
