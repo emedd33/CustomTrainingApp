@@ -1,7 +1,7 @@
-import FloatingActionButton from './../components/Atoms/FloatingActionButton';
+import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import React from 'react';
 import { View, Text } from 'react-native';
-function HomeScreen() {
+function HomePage() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
@@ -9,4 +9,4 @@ function HomeScreen() {
   );
 }
 
-export default HomeScreen
+export default HomePage
