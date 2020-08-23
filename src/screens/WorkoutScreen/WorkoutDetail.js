@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
-const WorkoutScreen = ({ navigation }) => {
+const WorkoutDetail = ({ navigation }) => {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Workouts</Text>
+            <Text>WorkoutDetail</Text>
             <Button onPress={() => navigation.openDrawer()} title="drawer" />
-            <Button onPress={() => navigation.navigate("WorkoutDetail")} title="details" />
+
         </View>
     );
 }
 
-export default WorkoutScreen
+export default WorkoutDetail
