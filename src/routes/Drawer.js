@@ -8,12 +8,13 @@ const Drawer = createDrawerNavigator({
     Home: {
         screen: HomeScreen
     },
-    Workout: {
+    Workouts: {
         screen: WorkoutStack
     },
-    Routine: {
+    Routines: {
         screen: RoutineStack
     }
 })
+
 
 export default Drawer
