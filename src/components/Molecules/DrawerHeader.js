@@ -6,7 +6,6 @@ const DrawerHeader = () => {
         <View style={styles.container}>
             <Image style={styles.headerBarIcon} source={require('../../assets/images/pull-up-icon.jpg')} />
             <View style={styles.titleContainer}>
-
                 <Text style={styles.title}>Custom workout log</Text>
                 <Text style={styles.subtitle}>Eskild Ruud Mageli</Text>
             </View>
