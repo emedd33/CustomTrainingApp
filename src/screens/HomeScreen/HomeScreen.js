@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, ImageBackground } from 'react-native';
 const HomeScreen = ({ navigation }) => {
+  const image = require("../../assets/images/profile_background.png");
+
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-    </View>
+    <ImageBackground source={image} style={{ width: '100%', height: '100%' }}>
+    </ImageBackground>
   );
 }
 
