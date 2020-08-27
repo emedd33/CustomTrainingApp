@@ -13,8 +13,8 @@ const SidebarListItem = ({ iconPath, text, action }) => {
 
 const styles = StyleSheet.create({
     container: {
-        height: "3rem",
-        margin: "1rem",
+        height: 30,
+        margin: 10,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",

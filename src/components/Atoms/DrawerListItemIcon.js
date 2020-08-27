@@ -21,6 +21,6 @@ const DrawerListItemIcon = ({ navigationPath }) => {
 }
 
 const styles = StyleSheet.create({
-    button: { margin: "1rem" }
+    button: { margin: 1 }
 })
 export default DrawerListItemIcon;

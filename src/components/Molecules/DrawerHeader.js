@@ -16,35 +16,36 @@ const DrawerHeader = () => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: Colors.APP_RED,
-        height: "5rem",
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",
         alignItems: "center",
+        paddingTop: 50,
+        paddingBottom: 30,
         shadowOffset: {
             width: 0,
-            height: 2,
+            height: 10,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
 
         elevation: 5,
-        marginBottom: "1rem",
+        marginBottom: 10,
 
     },
     headerBarIcon: {
-        width: "3rem",
-        height: "3rem",
-        borderRadius: "3rem",
-        borderStyle: "solid",
-        borderWidth: "0.1rem",
-        marginLeft: "1rem",
+        width: 50,
+        height: 50,
+        borderRadius: 50,
+        borderWidth: 10,
+        marginLeft: 20,
 
     },
     titleContainer: {
-        height: "3rem",
-        marginLeft: "1rem",
-        marginTop: "1rem",
+        height: 50,
+        marginLeft: 1,
+        marginTop: 1,
+        marginLeft: 20,
     },
     title: {
         fontSize: 15,
