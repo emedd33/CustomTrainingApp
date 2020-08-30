@@ -15,7 +15,7 @@
                     "reps": "int",
                     "tempo": "int",
                     "weights": "int",
-                    "breakDuration": "int",
+                    "breakDuration": "int"
                 }
             ],
             "numberOfCompletion": "int",
@@ -30,4 +30,5 @@
             "recordReps": "string",
             "recordWeight": "string"
         }
-    }
+    ]
+}
