@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, Button, ImageBackground, StyleSheet, Image } from 'react-native';
-import DrawerIcon from '../../components/Atoms/DrawerIcon';
+import { View, Text, ImageBackground, StyleSheet, Image } from 'react-native';
 import IconBox from '../../components/Atoms/IconBox';
-const HomeScreen = ({ navigation }) => {
+import { useSelector } from 'react-redux';
+const HomeScreen = () => {
   const backgroundImage = require("../../assets/images/profile_background.png");
-  const pullUpIcon = <Image style={styles.pullupIcon} source={require('../../assets/images/pull-up-icon.jpg')} />
-
+  const pullUpIcon = <Image style={styles.icon} source={require('../../assets/images/pull-up-icon.jpg')} />
+  const calendarIcon = <Image style={styles.icon} source={require('../../assets/images/calendar_image.png')} />
+  const firstName = useSelector((state) => state.HomeReducer.profile.firstName)
 
   return (
     <ImageBackground source={backgroundImage} style={styles.container} >
@@ -17,6 +18,7 @@ const HomeScreen = ({ navigation }) => {
         </View>
 
       </View>
+      <Text style={{ fontWeight: "bold", fontSize: 20 }}>{firstName}</Text>
       <View style={styles.profileDetailContainer}>
         <IconBox
           title={"5 Days"}
@@ -26,7 +28,7 @@ const HomeScreen = ({ navigation }) => {
         <IconBox
           title={"5 Days"}
           subTitle={"since last training"}
-          Icon={pullUpIcon}
+          Icon={calendarIcon}
         />
       </View>
 
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 2,
   },
-  pullupIcon: {
+  icon: {
     width: 80,
     height: 80,
     marginLeft: 10,

@@ -9,6 +9,8 @@ function DrawerContent({ navigation }) {
             <SidebarListItem text="Home" action={() => navigation.navigate("Home")} iconPath="Home" />
             <SidebarListItem text="Workouts" action={() => navigation.navigate("Workouts")} iconPath="Workouts" />
             <SidebarListItem text="Routines" action={() => navigation.navigate("Routines")} iconPath="Routines" />
+            <SidebarListItem text="Exercises" action={() => navigation.navigate("Exercises")} iconPath="Routines" />
+
         </View>
     );
 }

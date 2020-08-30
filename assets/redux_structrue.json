@@ -26,9 +26,7 @@
     "exercises": [
         {
             "name": "exerciseName",
-            "type": "categoryType",
-            "recordReps": "string",
-            "recordWeight": "string"
+            "type": "categoryType"
         }
     ]
 }

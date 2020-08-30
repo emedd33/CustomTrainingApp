@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from "redux";
+import ExerciseReducer from "./ExercicseScreen/ExerciseReducer";
 import HomeReducer from "./HomeScreen/HomeReducer";
 
 
 // rootReducer which is used to create store for App.js
 const rootReducer = combineReducers({
-    HomeReducer: HomeReducer
+    HomeReducer: HomeReducer,
+    ExerciseReducer: ExerciseReducer
 });
 
 

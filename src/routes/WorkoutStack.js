@@ -16,7 +16,11 @@ const WorkoutStack = ({ navigation }) => {
                     backgroundColor: Colors.APP_RED
                 },
             }} />
-            <Stack.Screen name="WorkoutDetail" component={WorkoutDetail} />
+            <Stack.Screen name="WorkoutDetail" component={WorkoutDetail} options={{
+                headerStyle: {
+                    backgroundColor: Colors.APP_RED
+                },
+            }} />
         </Stack.Navigator>
     );
 }

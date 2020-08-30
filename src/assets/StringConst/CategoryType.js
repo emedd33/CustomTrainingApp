@@ -1,4 +1,5 @@
 
-export const STRENGTH = "STRENGTH"
-export const CARDIO = "CARDIO"
-export const MOBILITY = "MOBILITY"
+const STRENGTH = "Strength"
+const CARDIO = "Cardio"
+const MOBILITY = "Mobility"
+export default { STRENGTH, CARDIO, MOBILITY } 
