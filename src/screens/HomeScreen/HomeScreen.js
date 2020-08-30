@@ -1,11 +1,16 @@
 import React from 'react';
 import { View, Text, Button, ImageBackground, StyleSheet, Image } from 'react-native';
 import DrawerIcon from '../../components/Atoms/DrawerIcon';
+import IconBox from '../../components/Atoms/IconBox';
 const HomeScreen = ({ navigation }) => {
-  const image = require("../../assets/images/profile_background.png");
+  const backgroundImage = require("../../assets/images/profile_background.png");
+  const pullUpIcon = <Image style={styles.pullupIcon} source={require('../../assets/images/pull-up-icon.jpg')} />
+
 
   return (
-    <ImageBackground source={image} style={styles.container} >
+    <ImageBackground source={backgroundImage} style={styles.container} >
+
+
       <View style={styles.profilePictureContainer}>
         <View style={styles.profilePictureCircle}>
           <Image style={styles.profilePictureImage} source={require("../../assets/images/profile_image.png")} />
@@ -13,30 +18,16 @@ const HomeScreen = ({ navigation }) => {
 
       </View>
       <View style={styles.profileDetailContainer}>
-        <View style={styles.profileDetailBox}>
-
-          <Image style={styles.pullupIcon} source={require('../../assets/images/pull-up-icon.jpg')} />
-          <View style={styles.profileDetailBoxTextContainer}>
-            <Text style={styles.profileDetailBoxTitle}>
-              5 Days
-            </Text>
-            <Text style={styles.profileDetailBoxSubTitle}>
-              Since last training
-            </Text>
-          </View>
-        </View>
-        <View style={styles.profileDetailBox}>
-          <Image style={styles.pullupIcon} source={require('../../assets/images/pull-up-icon.jpg')} />
-          <View style={styles.profileDetailBoxTextContainer}>
-            <Text style={styles.profileDetailBoxTitle}>
-              5 Days
-            </Text>
-            <Text style={styles.profileDetailBoxSubTitle}>
-              Since last training
-            </Text>
-          </View>
-        </View>
-
+        <IconBox
+          title={"5 Days"}
+          subTitle={"since last training"}
+          Icon={pullUpIcon}
+        />
+        <IconBox
+          title={"5 Days"}
+          subTitle={"since last training"}
+          Icon={pullUpIcon}
+        />
       </View>
 
     </ImageBackground>

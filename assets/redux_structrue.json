@@ -1,0 +1,33 @@
+{
+    "profile": {
+        "username": "string",
+        "firstName": "string",
+        "lastName": "string"
+    },
+    "routines": [
+        {
+            "name": "firstRoutine",
+            "exercises": [
+                {
+                    "name": "exerciseName",
+                    "category": "categoryType",
+                    "sets": "int",
+                    "reps": "int",
+                    "tempo": "int",
+                    "weights": "int",
+                    "breakDuration": "int",
+                }
+            ],
+            "numberOfCompletion": "int",
+            "lastCompleted": "date",
+            "note": "string"
+        }
+    ],
+    "exercises": [
+        {
+            "name": "exerciseName",
+            "type": "categoryType",
+            "recordReps": "string",
+            "recordWeight": "string"
+        }
+    }
