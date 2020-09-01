@@ -4,7 +4,7 @@ import Colors from "../../assets/Colors/Colors";
 const DrawerHeader = () => {
     return (
         <View style={styles.container}>
-            <Image style={styles.headerBarIcon} source={require('../../assets/images/pull-up-icon.jpg')} />
+            <Image style={styles.headerBarIcon} source={require('../../assets/icons/pullup_icon.jpg')} />
             <View style={styles.titleContainer}>
                 <Text style={styles.title}>Custom workout log</Text>
                 <Text style={styles.subtitle}>Eskild Ruud Mageli</Text>

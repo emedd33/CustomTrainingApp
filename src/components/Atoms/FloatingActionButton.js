@@ -1,32 +1,21 @@
 import React from "react";
-import PropTypes from "prop-types";
-
-import ActionButton from "react-native-action-button";
 import Colors from "../../assets/Colors/Colors";
+import { FloatingAction } from "react-native-floating-action";
 
-const FloatingActionButton = (props) => {
+const FloatingActionButton = ({ action }) => {
     return (
-        <ActionButton
-            buttonColor={Colors.APP_RED}
-            onPress={() => {
-                if (props.onPress) {
-                    props.onPress();
-                }
-                if (props.navigation) {
-                    return props.navigation.navigate(props.redirect, {
-                        params: props.params,
-                    });
-                }
-            }}
-            hideShadow={true}
-        ></ActionButton>
+        <FloatingAction
+            onPressMain={() => action()}
+            showBackground={false}
+            color={Colors.APP_RED}
+            visible={true}
+            iconWidth={20}
+            iconHeight={20}
+            floatingIcon={require("../../assets/icons/plus_icon.png")}
+        />
     );
 };
 
 
-FloatingActionButton.propTypes = {
-    navigation: PropTypes.object,
-    onPress: PropTypes.object,
-};
 
 export default FloatingActionButton;
