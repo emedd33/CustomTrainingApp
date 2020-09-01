@@ -3,8 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const ListItem = ({ action, title, deleteAction }) => {
-
-
+    const exercise = title;
     return (
         <View style={styles.container}>
 
@@ -30,10 +29,10 @@ const ListItem = ({ action, title, deleteAction }) => {
 }
 const styles = StyleSheet.create({
     container: {
-        width: 300,
-        margin: 10,
+        width: "100%",
+        marginleft: 20,
+        marginRitgh: 20,
         paddingBottom: 10,
-        marginRight: 50,
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
