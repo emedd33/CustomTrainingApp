@@ -1,13 +1,17 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import ListItem from '../../components/Atoms/ListItem';
+import ListItem from '../../components/Molecules/ListItem';
 import { DELETE_EXERCISE } from '../../redux/ExercicseScreen/Actions';
-import Colors from '../../assets/Colors/Colors';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
+import { Button, Overlay } from 'react-native-elements';
 
 const ExerciseScreen = ({ navigation }) => {
     const dispatch = useDispatch();
+    const [visible, setVisible] = useState(false)
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
     const exercises = useSelector((state) => state.ExerciseReducer.exercises)
     const deleteExercise = (exercise) => dispatch({
         type: DELETE_EXERCISE,

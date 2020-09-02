@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ExerciseScreen from '../screens/ExerciseScreen/ExerciseScreen';
 import DrawerIcon from '../components/Atoms/DrawerIcon';
 import Colors from '../assets/Colors/Colors';
-import AddExerciseScreen from '../screens/ExerciseScreen/addExerciseScreen';
+import AddExerciseScreen from '../screens/ExerciseScreen/AddExerciseScreen';
 const Stack = createStackNavigator()
 const ExerciseStack = ({ navigation }) => {
     return (

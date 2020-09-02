@@ -1,9 +1,16 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import { Overlay } from 'react-native-elements';
+
 import { AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import OverlayButton from '../Atoms/OverlayButton';
 const ListItem = ({ action, title, deleteAction }) => {
     const exercise = title;
+    const [visible, setVisible] = useState(false)
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
     return (
         <View style={styles.container}>
 
@@ -19,11 +26,27 @@ const ListItem = ({ action, title, deleteAction }) => {
             </TouchableOpacity>
             {
                 deleteAction ?
-                    <TouchableOpacity onPress={deleteAction} style={styles.icon}>
+                    <TouchableOpacity onPress={toggleOverlay} style={styles.icon}>
                         <AntDesign name="delete" size={24} color="black" />
                     </TouchableOpacity>
+
                     : null
             }
+            <Overlay isVisible={visible} onBackdropPress={toggleOverlay} >
+                <View style={styles.overlayContainer}>
+
+                    <View style={{ alignItems: "center" }}>
+
+                        <Text style={styles.overlayText}>
+                            Delete exercise?
+                    </Text>
+                    </View>
+                    <View style={styles.overlayButtonContainer}>
+                        <OverlayButton title="Cancel" action={() => setVisible(false)} />
+                        <OverlayButton title="Ok" action={() => deleteAction()} />
+                    </View>
+                </View>
+            </Overlay>
         </View>
     )
 }
@@ -51,7 +74,22 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginLeft: 10
-    }
+    },
+    overlayText: {
+        fontSize: 20
+    },
+    overlayContainer: {
+        justifyContent: "center",
+        width: 300,
+        height: 100
+    },
+    overlayButtonContainer: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+        marginTop: 20,
+    },
 
 })
 export default ListItem;
