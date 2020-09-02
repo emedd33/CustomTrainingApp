@@ -30,8 +30,8 @@ const ListItem = ({ action, title, deleteAction }) => {
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        marginleft: 20,
-        marginRitgh: 20,
+        marginLeft: 20,
+        marginRight: 20,
         paddingBottom: 10,
         display: "flex",
         flexDirection: "row",
