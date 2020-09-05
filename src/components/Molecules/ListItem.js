@@ -38,7 +38,7 @@ const ListItem = ({ action, title, deleteAction }) => {
                     <View style={{ alignItems: "center" }}>
 
                         <Text style={styles.overlayText}>
-                            Delete exercise?
+                            Delete?
                     </Text>
                     </View>
                     <View style={styles.overlayButtonContainer}>
