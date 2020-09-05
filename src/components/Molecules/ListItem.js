@@ -26,9 +26,9 @@ const ListItem = ({ action, title, deleteAction }) => {
             </TouchableOpacity>
             {
                 deleteAction ?
-                    <ButtonEx onPress={toggleOverlay} style={styles.icon}>
+                    <TouchableOpacity onPress={toggleOverlay} style={styles.icon}>
                         <AntDesign name="delete" size={24} color="black" />
-                    </ButtonEx>
+                    </TouchableOpacity>
 
                     : null
             }
@@ -39,7 +39,7 @@ const ListItem = ({ action, title, deleteAction }) => {
                     </View>
                     <View style={styles.overlayButtonContainer}>
                         <OverlayButton title="Cancel" action={() => setVisible(false)} />
-                        <OverlayButton title="Ok" action={() => deleteAction()} />
+                        <OverlayButton title="Ok" action={() => { setVisible(false); deleteAction() }} />
                     </View>
                 </View>
             </Overlay>
