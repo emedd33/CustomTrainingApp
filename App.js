@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import WorkoutStack from './src/routes/WorkoutStack';
 import RoutineStack from './src/routes/RoutineStack';
-import HomeStack from './src/routes/HomeStack';
+import ProfileStack from './src/routes/ProfileStack';
 import DrawerContent from './src/components/organisms/DrawerContent';
 import configureStore from './src/redux/store';
 import { Provider } from "react-redux";
@@ -18,7 +18,7 @@ function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Drawer.Navigator initialRouteName="Exercises" drawerContent={(props) => <DrawerContent {...props} />}>
-          <Drawer.Screen name="Home" component={HomeStack} />
+          <Drawer.Screen name="Profile" component={ProfileStack} />
           <Drawer.Screen name="Routines" component={RoutineStack} />
           <Drawer.Screen name="Workouts" component={WorkoutStack} />
           <Drawer.Screen name="Exercises" component={ExerciseStack} />

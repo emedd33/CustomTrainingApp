@@ -3,7 +3,7 @@ import { Fontisto, Foundation, Feather, MaterialCommunityIcons } from '@expo/vec
 
 import { StyleSheet, View } from 'react-native';
 const DrawerListItemIcon = ({ navigationPath }) => {
-    if (navigationPath === "Home") {
+    if (navigationPath === "Profile") {
         return (
             <Fontisto name="home" size={24} color="black" />);
     }

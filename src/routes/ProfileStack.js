@@ -2,15 +2,15 @@ import React from 'react';
 import { Feather } from '@expo/vector-icons';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from '../screens/HomeScreen/HomeScreen';
+import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
 import DrawerIcon from '../components/Atoms/DrawerIcon';
 import Colors from '../assets/Colors/Colors';
 const Stack = createStackNavigator()
-const HomeStack = ({ navigation }) => {
+const ProfileStack = ({ navigation }) => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
-                headerTitle: "Home",
+            <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{
+                headerTitle: "Profile",
                 headerLeft: () => <DrawerIcon navigation={navigation} />,
                 headerStyle: {
                     backgroundColor: Colors.APP_RED,
@@ -20,4 +20,4 @@ const HomeStack = ({ navigation }) => {
     );
 }
 
-export default HomeStack
+export default ProfileStack

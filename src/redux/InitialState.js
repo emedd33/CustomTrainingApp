@@ -1,9 +1,9 @@
 import INITIAL_EXERCISE_STATE from "./ExercicseScreen/InitialExerciseState";
-import INITIAL_HOME_STATE from "./ExercicseScreen/InitialHomeState";
+import INITIAL_HOME_STATE from "./ExercicseScreen/InitialProfileState";
 
 
 const INITIAL_STATE = {
-    home: INITIAL_HOME_STATE,
+    profile: INITIAL_HOME_STATE,
     exercises: INITIAL_EXERCISE_STATE,
     routines: [{
         name: "Strength day 1",
