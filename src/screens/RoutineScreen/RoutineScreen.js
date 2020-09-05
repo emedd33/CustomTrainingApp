@@ -8,7 +8,6 @@ import moment from 'moment';
 const RoutineScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const routines = useSelector((state) => state.routines)
-    console.log(routines)
     return (
         <View style={styles.container}>
             {
@@ -18,7 +17,10 @@ const RoutineScreen = ({ navigation }) => {
                         <ListItem
                             title={routine.name}
                             action={() => console.log("hei")}
-                            deleteAction={() => dispatch(deleteRoutine(routine))}
+                            deleteAction={() => {
+                                dispatch(deleteRoutine(routine));
+                                navigation.navigate("Routine")
+                            }}
                         />
                         <View style={styles.itemSubContainer}>
                             <Text>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
-import { StyleSheet, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 const DrawerIcon = ({ navigation }) => {
     return (
         <TouchableOpacity style={styles.container} onPress={() => navigation.openDrawer()}>

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { Overlay } from 'react-native-elements';
+import Modal from 'modal-react-native-web';
 
 import { AntDesign } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import OverlayButton from '../Atoms/OverlayButton';
 const ListItem = ({ action, title, deleteAction }) => {
-    const exercise = title;
     const [visible, setVisible] = useState(false)
     const toggleOverlay = () => {
         setVisible(!visible);
     };
+    Modal.setAppElement('body'); // to remove errorLog
     return (
         <View style={styles.container}>
 
@@ -26,20 +26,16 @@ const ListItem = ({ action, title, deleteAction }) => {
             </TouchableOpacity>
             {
                 deleteAction ?
-                    <TouchableOpacity onPress={toggleOverlay} style={styles.icon}>
+                    <ButtonEx onPress={toggleOverlay} style={styles.icon}>
                         <AntDesign name="delete" size={24} color="black" />
-                    </TouchableOpacity>
+                    </ButtonEx>
 
                     : null
             }
-            <Overlay isVisible={visible} onBackdropPress={toggleOverlay} >
+            <Overlay ModalComponent={Modal} isVisible={visible} onBackdropPress={toggleOverlay} >
                 <View style={styles.overlayContainer}>
-
                     <View style={{ alignItems: "center" }}>
-
-                        <Text style={styles.overlayText}>
-                            Delete?
-                    </Text>
+                        <Text style={styles.overlayText}>Delete {title}?</Text>
                     </View>
                     <View style={styles.overlayButtonContainer}>
                         <OverlayButton title="Cancel" action={() => setVisible(false)} />

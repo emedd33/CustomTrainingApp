@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import { View, Text, StyleSheet, Button, Alert, Picker } from 'react-native';
 import { Input, Icon } from 'react-native-elements';
-import DropDownPicker from 'react-native-dropdown-picker';
 import CategoryType from '../../assets/StringConst/CategoryType'
 import { useDispatch } from 'react-redux';
 import { ADD_EXERCISE, DELETE_EXERCISE } from '../../redux/ExercicseScreen/Actions';
@@ -60,21 +59,23 @@ const AddExerciseScreen = ({ navigation }) => {
                 onChangeText={(input) => { setTypedName(input) }}
             />
             <Text style={styles.inputTitle}>Category</Text>
-            <DropDownPicker
-                items={categories}
-                style={styles.categoryDropdown}
-                defaultValue={selectedCategory}
-                containerStyle={{ height: 40 }}
-                itemStyle={{
-                    justifyContent: 'flex-start'
-                }}
-                dropDownStyle={{ backgroundColor: '#fafafa' }}
-                onChangeItem={item => setSelectedCategory(item.value)}
-            />
+            <View style={{ borderColor: "#BCBCBC", borderBottomWidth: 2, margin: 10 }}>
+
+                <Picker
+                    selectedValue={selectedCategory}
+                    style={{ height: 50, color: "#ACACAC" }}
+                    onValueChange={(itemValue) => setSelectedCategory(itemValue)}
+                >
+                    <Picker.Item value='' label='Choose category' />
+                    <Picker.Item label={CategoryType.STRENGTH} value={CategoryType.STRENGTH} />
+                    <Picker.Item label={CategoryType.CARDIO} value={CategoryType.CARDIO} />
+                    <Picker.Item label={CategoryType.MOBILITY} value={CategoryType.MOBILITY} />
+                </Picker>
+            </View>
             <View style={styles.submitExerciseButton}>
                 <Button title="Create" color="green" onPress={() => submitExercise()} />
             </View>
-        </View>
+        </View >
     );
 }
 

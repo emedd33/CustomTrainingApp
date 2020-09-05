@@ -1,7 +1,6 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import React from 'react';
 import DrawerListItemIcon from "../Atoms/DrawerListItemIcon";
-import { TouchableOpacity } from "react-native-gesture-handler";
 const SidebarListItem = ({ iconPath, text, action }) => {
     return (
         <TouchableOpacity style={styles.container} onPress={() => action()}>

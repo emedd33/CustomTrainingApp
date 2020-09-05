@@ -7,7 +7,7 @@ const ExerciseReducer = (state = INITIAL_EXERCISE_STATE, action) => {
         case DELETE_EXERCISE:
             return state.filter((exercise) => exercise.name != action.data.name)
         case ADD_EXERCISE:
-            const newExerciseList = JSON.parse(JSON.stringify(state.exercises));
+            const newExerciseList = JSON.parse(JSON.stringify(state));
             newExerciseList.push(action.data)
             return newExerciseList
         default:
