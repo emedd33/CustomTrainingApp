@@ -3,12 +3,31 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import ListItem from '../../components/Molecules/ListItem';
 import { deleteRoutine } from '../../redux/RoutineScreen/TypedActions';
+import moment from 'moment';
+
 const RoutineScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const routines = useSelector((state) => state.routines)
+    console.log(routines)
     return (
         <View style={styles.container}>
-            {routines.map((routine, index) => <ListItem title={routine.name} key={index} action={() => console.log("hei")} deleteAction={() => dispatch(deleteRoutine(routine))} />)}
+            {
+                routines.map((routine, index) =>
+
+                    <View style={styles.itemContainer} key={index}>
+                        <ListItem
+                            title={routine.name}
+                            action={() => console.log("hei")}
+                            deleteAction={() => dispatch(deleteRoutine(routine))}
+                        />
+                        <View style={styles.itemSubContainer}>
+                            <Text>
+                                Last done: {moment(routine.lastDone, "YYYY-MM-DD").fromNow()}
+                            </Text>
+                        </View>
+                    </View>
+                )
+            }
         </View>
     );
 }
@@ -17,6 +36,16 @@ const styles = StyleSheet.create({
     container: {
         margin: 20,
         marginRight: 40,
+    },
+    itemContainer: {
+        marginBottom: 20,
+        borderBottomColor: 'grey',
+        borderBottomWidth: 1,
+    },
+    itemSubContainer: {
+        display: "flex",
+        flexDirection: "row",
+
     }
 })
 export default RoutineScreen

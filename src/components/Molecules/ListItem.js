@@ -60,8 +60,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
-        borderBottomColor: 'grey',
-        borderBottomWidth: 1,
+
     },
     leftSide: {
         width: 300,
