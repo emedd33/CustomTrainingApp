@@ -18,7 +18,7 @@ const AddExerciseScreen = ({ navigation }) => {
     const [typedName, setTypedName] = useState(null)
     const [selectedCategory, setSelectedCategory] = useState(null)
     const addExercise = (exercise) => dispatch({
-        type: DELETE_EXERCISE,
+        type: ADD_EXERCISE,
         data: exercise
     })
     const checkSubmission = () => {
@@ -40,7 +40,6 @@ const AddExerciseScreen = ({ navigation }) => {
     }
     const submitExercise = () => {
         const [errorMessage, isSubmissionError] = checkSubmission()
-        dispatch({ type: ADD_EXERCISE, data: null })
         if (!isSubmissionError) {
             addExercise({ name: typedName, type: selectedCategory })
             navigation.navigate("ExerciseScreen")
@@ -48,9 +47,7 @@ const AddExerciseScreen = ({ navigation }) => {
             Alert.alert(
                 'Please Fill out form',
                 errorMessage,
-                [
-                    { text: 'OK', onPress: () => console.log('OK Pressed') }
-                ],
+                [{ text: 'OK' }],
                 { cancelable: true }
             );
         }
@@ -60,7 +57,7 @@ const AddExerciseScreen = ({ navigation }) => {
             <Text style={styles.inputTitle}>Name</Text>
             <Input
                 placeholder='Type here'
-                onChangeText={(input) => { console.log(input); setTypedName(input) }}
+                onChangeText={(input) => { setTypedName(input) }}
             />
             <Text style={styles.inputTitle}>Category</Text>
             <DropDownPicker

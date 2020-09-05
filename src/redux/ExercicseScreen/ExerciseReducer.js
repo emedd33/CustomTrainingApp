@@ -3,7 +3,6 @@ import { DELETE_EXERCISE, ADD_EXERCISE } from "./Actions";
 const { default: INITIAL_STATE } = require("../InitialState");
 
 const ExerciseReducer = (state = INITIAL_STATE, action) => {
-    console.log("addind")
     switch (action.type) {
         case DELETE_EXERCISE:
             return {
@@ -11,11 +10,11 @@ const ExerciseReducer = (state = INITIAL_STATE, action) => {
                 exercises: state.exercises.filter((exercise) => exercise.name != action.data.name)
             }
         case ADD_EXERCISE:
-            console.log("adding exercise");
-            debugger;
+            const newExerciseList = JSON.parse(JSON.stringify(state.exercises));
+            newExerciseList.push(action.data)
             return {
                 ...state,
-                exercises: state.exercises.push(action.data)
+                exercises: newExerciseList
             }
         default:
             return state
