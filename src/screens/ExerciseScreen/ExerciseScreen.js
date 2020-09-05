@@ -8,10 +8,6 @@ import { Button, Overlay } from 'react-native-elements';
 
 const ExerciseScreen = ({ navigation }) => {
     const dispatch = useDispatch();
-    const [visible, setVisible] = useState(false)
-    const toggleOverlay = () => {
-        setVisible(!visible);
-    };
     const exercises = useSelector((state) => state.ExerciseReducer.exercises)
     const deleteExercise = (exercise) => dispatch({
         type: DELETE_EXERCISE,

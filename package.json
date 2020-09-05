@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "postinstall": "autofix.bat"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
@@ -18,6 +19,7 @@
     "react-dom": "~16.11.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-action-button": "^2.8.5",
+    "react-native-dropdown-picker": "^3.6.8",
     "react-native-elements": "^2.3.1",
     "react-native-floating-action": "^1.21.0",
     "react-native-gesture-handler": "~1.6.0",
