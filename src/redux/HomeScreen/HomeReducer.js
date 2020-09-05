@@ -1,10 +1,7 @@
-const { default: INITIAL_STATE } = require("../InitialState");
-const { INCREMENT } = require("./Actions");
+const { default: INITIAL_HOME_STATE } = require("./InitialHomeState");
 
-const HomeReducer = (state = INITIAL_STATE, action) => {
+const HomeReducer = (state = INITIAL_HOME_STATE, action) => {
     switch (action.type) {
-        case INCREMENT:
-            return state
         default:
             return state
     }

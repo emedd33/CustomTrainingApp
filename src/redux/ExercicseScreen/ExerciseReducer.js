@@ -1,8 +1,8 @@
 import { DELETE_EXERCISE, ADD_EXERCISE } from "./Actions";
 
-const { default: INITIAL_STATE } = require("../InitialState");
+const { default: INITIAL_EXERCISE_STATE } = require("./InitialExerciseState");
 
-const ExerciseReducer = (state = INITIAL_STATE, action) => {
+const ExerciseReducer = (state = INITIAL_EXERCISE_STATE, action) => {
     switch (action.type) {
         case DELETE_EXERCISE:
             return {

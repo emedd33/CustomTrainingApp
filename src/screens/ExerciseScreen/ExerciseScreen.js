@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import ListItem from '../../components/Molecules/ListItem';
 import { DELETE_EXERCISE } from '../../redux/ExercicseScreen/Actions';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
-import { Button, Overlay } from 'react-native-elements';
 
 const ExerciseScreen = ({ navigation }) => {
     const dispatch = useDispatch();
