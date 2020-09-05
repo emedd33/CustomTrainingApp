@@ -1,0 +1,2 @@
+export const DELETE_ROUTINE = "DELETE_ROUTINE"
+export const ADD_ROUTINE = "ADD_ROUTINE"

@@ -7,7 +7,7 @@ import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 
 const ExerciseScreen = ({ navigation }) => {
     const dispatch = useDispatch();
-    const exercises = useSelector((state) => state.ExerciseReducer.exercises)
+    const exercises = useSelector((state) => state.exercises)
     const deleteExercise = (exercise) => dispatch({
         type: DELETE_EXERCISE,
         data: exercise

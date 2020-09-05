@@ -1,7 +1,7 @@
 import CategoryType from "../../assets/StringConst/CategoryType"
 
-const INITIAL_EXERCISE_STATE = {
-    exercises: [
+const INITIAL_EXERCISE_STATE =
+    [
         {
             name: "Pullups",
             type: CategoryType.STRENGTH
@@ -23,6 +23,6 @@ const INITIAL_EXERCISE_STATE = {
             type: CategoryType.STRENGTH
         }
     ]
-}
+
 
 export default INITIAL_EXERCISE_STATE 

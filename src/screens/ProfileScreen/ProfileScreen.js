@@ -6,7 +6,7 @@ const ProfileScreen = () => {
   const backgroundImage = require("../../assets/images/profile_background.png");
   const pullUpIcon = <Image style={styles.icon} source={require('../../assets/icons/pullup_icon.jpg')} />
   const calendarIcon = <Image style={styles.icon} source={require('../../assets/icons/calendar_icon.png')} />
-  const firstName = useSelector((state) => state.ProfileReducer.profile.firstName)
+  const firstName = useSelector((state) => state.profile.firstName)
 
   return (
     <ImageBackground source={backgroundImage} style={styles.container} >
