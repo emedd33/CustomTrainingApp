@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import ListItem from '../../components/Molecules/ListItem';
+import ListItem from '../../components/organisms/ListItem';
 import { deleteRoutine } from '../../redux/RoutineScreen/TypedActions';
 import moment from 'moment';
 
@@ -19,11 +19,10 @@ const RoutineScreen = ({ navigation }) => {
                             action={() => console.log("hei")}
                             deleteAction={() => {
                                 dispatch(deleteRoutine(routine));
-                                navigation.navigate("Routine")
                             }}
                         />
                         <View style={styles.itemSubContainer}>
-                            <Text>
+                            <Text style={{ marginLeft: 0 }}>
                                 Last done: {moment(routine.lastDone, "YYYY-MM-DD").fromNow()}
                             </Text>
                         </View>
@@ -36,8 +35,8 @@ const RoutineScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     container: {
-        margin: 20,
         marginRight: 40,
+        margin: 20
     },
     itemContainer: {
         marginBottom: 20,

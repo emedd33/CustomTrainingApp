@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import ListItem from '../../components/Molecules/ListItem';
+import ListItem from '../../components/organisms/ListItem';
 import { DELETE_EXERCISE } from '../../redux/ExercicseScreen/Actions';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 

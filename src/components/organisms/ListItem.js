@@ -4,13 +4,14 @@ import { Overlay } from 'react-native-elements';
 import Modal from 'modal-react-native-web';
 
 import { AntDesign } from '@expo/vector-icons';
-import OverlayButton from '../Atoms/OverlayButton';
+import OverLayConfirm from '../Molecules/OverLayConfirm';
+import { deleteRoutine } from '../../redux/RoutineScreen/TypedActions';
 const ListItem = ({ action, title, deleteAction }) => {
     const [visible, setVisible] = useState(false)
     const toggleOverlay = () => {
         setVisible(!visible);
     };
-    Modal.setAppElement('body'); // to remove errorLog
+
     return (
         <View style={styles.container}>
 
@@ -32,24 +33,13 @@ const ListItem = ({ action, title, deleteAction }) => {
 
                     : null
             }
-            <Overlay ModalComponent={Modal} isVisible={visible} onBackdropPress={toggleOverlay} >
-                <View style={styles.overlayContainer}>
-                    <View style={{ alignItems: "center" }}>
-                        <Text style={styles.overlayText}>Delete {title}?</Text>
-                    </View>
-                    <View style={styles.overlayButtonContainer}>
-                        <OverlayButton title="Cancel" action={() => setVisible(false)} />
-                        <OverlayButton title="Ok" action={() => { setVisible(false); deleteAction() }} />
-                    </View>
-                </View>
-            </Overlay>
+            <OverLayConfirm visible={visible} toggleOverlay={toggleOverlay} confirmAction={() => deleteAction()} confirmMessage={"Delete " + title + "?"} />
         </View>
     )
 }
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        marginLeft: 20,
         marginRight: 20,
         paddingBottom: 10,
         display: "flex",
