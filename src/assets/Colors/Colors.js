@@ -1,4 +1,4 @@
 const APP_RED = "#DE4D4D"
 const APP_GREEN = "#0EA900"
-const APP_SHADOW = "#6C6C6C"
-export default { APP_RED: APP_RED, APP_GREEN: APP_GREEN, APP_SHADOW: APP_SHADOW }
+const APP_GRAY = "#6C6C6C"
+export default { APP_RED: APP_RED, APP_GREEN: APP_GREEN, APP_GRAY: APP_GRAY }

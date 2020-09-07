@@ -23,8 +23,8 @@ const FloatingActionButton = ({ action }) => {
 const styles = StyleSheet.create({
     container: {
         right: 0,
-        position: 'fixed',
-        top: "100%"
+        position: 'absolute',
+        top: 100
     }
 });
 

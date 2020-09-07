@@ -13,7 +13,13 @@ import Colors from '../../assets/Colors/Colors';
 const RoutineScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const routines = useSelector((state) => state.routines)
+
+    // Code for not giving error for modal in web browser
     const ModalInput = (document ? Modal : null)
+    if (typeof (window) !== 'undefined') {
+        Modal.setAppElement('body')
+    }
+
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
     const [selectedRoutine, setSelectedRoutine] = useState(null)
 
@@ -31,8 +37,13 @@ const RoutineScreen = ({ navigation }) => {
 
                     <TouchableOpacity style={styles.itemContainer} key={routine.id} onPress={() => console.log("hei")}>
                         <TouchableOpacity onPress={() => console.log("hei")}>
-                            <View style={{ backgroundColor: renderBackgroundColor(routine.id), height: 40, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
-                                <Text style={{ marginLeft: 20 }}>{routine.name}</Text>
+                            <View style={{ backgroundColor: renderBackgroundColor(routine.id), height: 50, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
+                                <View>
+
+                                    <Text style={{ marginLeft: 20, fontSize: 15 }}>{routine.name}</Text>
+                                    <Text style={{ marginLeft: 25, color: Colors.APP_GRAY }}>{routine.lastDone ? "Last done: " + moment(routine.lastDone, "YYYY-MM-DD").fromNow() : ""}</Text>
+
+                                </View>
                                 <View style={{ marginRight: 20 }}>
 
                                     <TouchableOpacity onPress={() => { setSelectedRoutine(routine); setIsDeleteModalVisible(true) }} style={null}>

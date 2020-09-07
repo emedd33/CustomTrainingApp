@@ -15,7 +15,12 @@ const ExerciseScreen = ({ navigation }) => {
     const dispatch = useDispatch();
     const exercises = useSelector((state) => state.exercises)
     const [isVisible, setIsVisible] = useState(false)
+
+    // Code for not giving error for modal in web browser
     const ModalInput = (document ? Modal : null)
+    if (typeof (window) !== 'undefined') {
+        Modal.setAppElement('body')
+    }
     const [selectedExercise, setSelectedExercise] = useState(null)
 
     function renderBackgroundColor(index) {
@@ -28,7 +33,7 @@ const ExerciseScreen = ({ navigation }) => {
     return (
         <View style={{}}>
             {exercises.map((exercise, index) =>
-                <TouchableOpacity onPress={() => console.log("hei")} style={{
+                <TouchableOpacity onPress={() => console.log("hei")} key={index} style={{
                     borderBottomColor: 'grey',
                     borderBottomWidth: 1,
                 }}>
@@ -41,9 +46,6 @@ const ExerciseScreen = ({ navigation }) => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                    {
-                        //<ListItem title={exercise.name} index={index} key={exercise} deleteAction={() => deleteExercise(exercise)} />
-                    }
                 </TouchableOpacity>
             )
             }
