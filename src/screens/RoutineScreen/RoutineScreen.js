@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import { deleteRoutine, addRoutine } from '../../redux/RoutineScreen/TypedActions';
 import { AntDesign } from '@expo/vector-icons';
 import moment from 'moment';
@@ -33,7 +32,7 @@ const RoutineScreen = ({ navigation }) => {
         }
     }
     return (
-        <View style={styles.container}>
+        <View style={{ height: "100%" }}>
             {
                 routines.map((routine) =>
 
@@ -43,7 +42,7 @@ const RoutineScreen = ({ navigation }) => {
                                 <View>
 
                                     <Text style={{ marginLeft: 20, fontSize: 15 }}>{routine.name}</Text>
-                                    <Text style={{ marginLeft: 25, color: Colors.APP_GRAY }}>{routine.lastDone ? "Last done: " + moment(routine.lastDone, "YYYY-MM-DD").fromNow() : ""}</Text>
+                                    {routine.lastDone ? <Text style={{ marginLeft: 25, color: Colors.APP_GRAY }}>{"Last done: " + moment(routine.lastDone, "YYYY-MM-DD").fromNow()}</Text> : null}
 
                                 </View>
                                 <View style={{ marginRight: 20 }}>
@@ -57,7 +56,6 @@ const RoutineScreen = ({ navigation }) => {
                     </TouchableOpacity>
                 )
             }
-            <FloatingActionButton action={() => dispatch(addRoutine())} />
 
             <Overlay isVisible={isDeleteModalVisible} overlayStyle={{ width: "60%" }} onBackdropPress={() => setIsDeleteModalVisible(false)} ModalComponent={ModalInput}>
                 <View style={{ padding: 30 }}>
@@ -68,6 +66,28 @@ const RoutineScreen = ({ navigation }) => {
                     </View>
                 </View>
             </Overlay>
+            <TouchableOpacity
+                style={{
+                    borderWidth: 1,
+                    borderColor: 'rgba(0,0,0,0.2)',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 70,
+                    position: 'absolute',
+                    bottom: 10,
+                    right: 10,
+                    height: 70,
+                    backgroundColor: Colors.APP_RED,
+                    borderRadius: 100,
+                }}
+                onPress={() => dispatch(addRoutine())}
+            >
+                <View>
+
+                    <AntDesign name="plus" size={24} color="black" />
+                </View>
+            </TouchableOpacity>
+
         </View>
     );
 }

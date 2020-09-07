@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 import Modal from 'modal-react-native-web';
 
-import { Overlay } from 'react-native-elements';
+import { Overlay, Icon } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
 import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
 
@@ -60,6 +60,27 @@ const ExerciseScreen = ({ navigation }) => {
                     </View>
                 </View>
             </Overlay>
+            <TouchableOpacity
+                style={{
+                    borderWidth: 1,
+                    borderColor: 'rgba(0,0,0,0.2)',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 70,
+                    position: 'absolute',
+                    bottom: 10,
+                    right: 10,
+                    height: 70,
+                    backgroundColor: Colors.APP_RED,
+                    borderRadius: 100,
+                }}
+                onPress={() => navigation.navigate("AddExerciseScreen")}
+            >
+                <View>
+
+                    <AntDesign name="plus" size={24} color="black" />
+                </View>
+            </TouchableOpacity>
         </View >
     );
 }
