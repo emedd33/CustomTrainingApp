@@ -5,17 +5,25 @@ import Modal from 'modal-react-native-web';
 
 import { AntDesign } from '@expo/vector-icons';
 import OverLayConfirm from '../Molecules/OverLayConfirm';
-import { deleteRoutine } from '../../redux/RoutineScreen/TypedActions';
-const ListItem = ({ action, title, deleteAction }) => {
+const ListItem = ({ action, title, deleteAction, index }) => {
     const [visible, setVisible] = useState(false)
     const toggleOverlay = () => {
         setVisible(!visible);
     };
-
+    const renderStyle = () => {
+        let style = containerStyle
+        if (index % 2 === 0) {
+            style.backgroundColor = "gray"
+            return style
+        } else {
+            style.backgroundColor = "transparent"
+            return style
+        }
+    }
     return (
-        <View style={styles.container}>
+        <View style={renderStyle()}>
 
-            <TouchableOpacity style={styles.leftSide}>
+            <View style={styles.leftSide}>
                 {
                     action ?
                         <TouchableOpacity onPress={action}>
@@ -24,7 +32,7 @@ const ListItem = ({ action, title, deleteAction }) => {
                         :
                         <Text style={styles.text}>{title}</Text>
                 }
-            </TouchableOpacity>
+            </View>
             {
                 deleteAction ?
                     <TouchableOpacity onPress={toggleOverlay} style={styles.icon}>
@@ -37,17 +45,18 @@ const ListItem = ({ action, title, deleteAction }) => {
         </View>
     )
 }
-const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-        marginRight: 20,
-        paddingBottom: 10,
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
+const containerStyle = {
+    width: "100%",
+    marginRight: 20,
+    paddingBottom: 10,
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "transparent",
+    justifyContent: "space-between",
 
-    },
+}
+const styles = StyleSheet.create({
     leftSide: {
         width: 300,
         height: 30,
