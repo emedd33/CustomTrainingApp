@@ -6,7 +6,6 @@ import { AntDesign } from '@expo/vector-icons';
 
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import { Overlay } from 'react-native-elements';
-import Modal from 'modal-react-native-web';
 import Colors from '../../assets/Colors/Colors';
 import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
 
@@ -17,9 +16,10 @@ const ExerciseScreen = ({ navigation }) => {
     const [isVisible, setIsVisible] = useState(false)
 
     // Code for not giving error for modal in web browser
-    const ModalInput = (document ? Modal : null)
-    if (typeof (window) !== 'undefined') {
-        Modal.setAppElement('body')
+    let ModalInput;
+    if (typeof document != 'undefined') {
+        ModalInput = Modal
+        ModalInput.setAppElement('body')
     }
     const [selectedExercise, setSelectedExercise] = useState(null)
 

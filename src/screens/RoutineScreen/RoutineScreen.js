@@ -15,10 +15,12 @@ const RoutineScreen = ({ navigation }) => {
     const routines = useSelector((state) => state.routines)
 
     // Code for not giving error for modal in web browser
-    const ModalInput = (document ? Modal : null)
-    if (typeof (window) !== 'undefined') {
-        Modal.setAppElement('body')
+    let ModalInput;
+    if (typeof document != 'undefined') {
+        ModalInput = Modal
+        ModalInput.setAppElement('body')
     }
+
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
     const [selectedRoutine, setSelectedRoutine] = useState(null)
