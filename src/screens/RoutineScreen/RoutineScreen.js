@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import ListItem from '../../components/organisms/ListItem';
-import { deleteRoutine } from '../../redux/RoutineScreen/TypedActions';
+import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
+import { deleteRoutine, addRoutine } from '../../redux/RoutineScreen/TypedActions';
 import { AntDesign } from '@expo/vector-icons';
 import moment from 'moment';
+import Modal from 'modal-react-native-web';
+import { Overlay } from 'react-native-elements';
+import Colors from '../../assets/Colors/Colors';
+
 
 const RoutineScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const routines = useSelector((state) => state.routines)
+    const ModalInput = (document ? Modal : null)
+    const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
+    const [selectedRoutine, setSelectedRoutine] = useState(null)
 
     function renderBackgroundColor(index) {
         if (index % 2 == 0) {
@@ -20,15 +27,15 @@ const RoutineScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             {
-                routines.map((routine, index) =>
+                routines.map((routine) =>
 
-                    <TouchableOpacity style={styles.itemContainer} key={index} onPress={() => console.log("hei")}>
+                    <TouchableOpacity style={styles.itemContainer} key={routine.id} onPress={() => console.log("hei")}>
                         <TouchableOpacity onPress={() => console.log("hei")}>
-                            <View style={{ backgroundColor: renderBackgroundColor(index), height: 40, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
+                            <View style={{ backgroundColor: renderBackgroundColor(routine.id), height: 40, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
                                 <Text style={{ marginLeft: 20 }}>{routine.name}</Text>
                                 <View style={{ marginRight: 20 }}>
 
-                                    <TouchableOpacity onPress={() => dispatch(deleteRoutine(routine))} style={null}>
+                                    <TouchableOpacity onPress={() => { setSelectedRoutine(routine); setIsDeleteModalVisible(true) }} style={null}>
                                         <AntDesign name="delete" size={24} color="black" />
                                     </TouchableOpacity>
                                 </View>
@@ -37,6 +44,17 @@ const RoutineScreen = ({ navigation }) => {
                     </TouchableOpacity>
                 )
             }
+            <FloatingActionButton action={() => dispatch(addRoutine())} />
+
+            <Overlay isVisible={isDeleteModalVisible} overlayStyle={{ width: "60%" }} onBackdropPress={() => setIsDeleteModalVisible(false)} ModalComponent={ModalInput}>
+                <View style={{ padding: 30 }}>
+                    <Text style={{ marginBottom: 20, fontSize: 15 }}>Delete {selectedRoutine ? selectedRoutine.name : ""}?</Text>
+                    <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
+                        <Button title="Cancel" color={Colors.APP_RED} style={{ flex: 1 }} onPress={() => setIsDeleteModalVisible(false)} />
+                        <Button title="   Ok   " color={Colors.APP_GREEN} style={{ flex: 1, }} onPress={() => { setIsDeleteModalVisible(false); dispatch(deleteRoutine(selectedRoutine.id)) }} />
+                    </View>
+                </View>
+            </Overlay>
         </View>
     );
 }

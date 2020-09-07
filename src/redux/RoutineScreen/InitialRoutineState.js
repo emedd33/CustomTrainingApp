@@ -1,6 +1,7 @@
 
 const INITIAL_ROUTINE_STATE =
     [{
+        id: 1,
         name: "Strength day 1",
         created: "2020-08-05",
         lastDone: "2020-08-05",
@@ -8,6 +9,7 @@ const INITIAL_ROUTINE_STATE =
         numberOfCompletion: 0
     },
     {
+        id: 2,
         name: "Strength day 2",
         created: "2020-07-04",
         lastDone: "2020-07-04",

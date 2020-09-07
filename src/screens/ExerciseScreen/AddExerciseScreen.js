@@ -15,11 +15,18 @@ const categories = [
 const AddExerciseScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const [typedName, setTypedName] = useState(null)
-    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [selectedCategory, setSelectedCategory] = useState('')
     const addExercise = (exercise) => dispatch({
         type: ADD_EXERCISE,
         data: exercise
     })
+    const renderPickerStyle = () => {
+        if (selectedCategory === '') {
+            return { height: 50, color: "#ACACAC" }
+        } else {
+            return { height: 50, color: "black" }
+        }
+    }
     const checkSubmission = () => {
         let errorMessage = ""
         if (!typedName || typedName === "") {
@@ -59,17 +66,17 @@ const AddExerciseScreen = ({ navigation }) => {
                 onChangeText={(input) => { setTypedName(input) }}
             />
             <Text style={styles.inputTitle}>Category</Text>
-            <View style={{ borderColor: "#BCBCBC", borderBottomWidth: 2, margin: 10 }}>
+            <View style={{ borderColor: "#BCBCBC", margin: 10 }}>
 
                 <Picker
                     selectedValue={selectedCategory}
-                    style={{ height: 50, color: "#ACACAC" }}
+                    style={renderPickerStyle()}
                     onValueChange={(itemValue) => setSelectedCategory(itemValue)}
                 >
-                    <Picker.Item value='' label='Choose category' />
-                    <Picker.Item label={CategoryType.STRENGTH} value={CategoryType.STRENGTH} />
-                    <Picker.Item label={CategoryType.CARDIO} value={CategoryType.CARDIO} />
-                    <Picker.Item label={CategoryType.MOBILITY} value={CategoryType.MOBILITY} />
+                    <Picker.Item value='' color="#ACACAC" label='Choose category' />
+                    <Picker.Item label={CategoryType.STRENGTH} color="black" value={CategoryType.STRENGTH} />
+                    <Picker.Item label={CategoryType.CARDIO} color="black" value={CategoryType.CARDIO} />
+                    <Picker.Item label={CategoryType.MOBILITY} color="black" value={CategoryType.MOBILITY} />
                 </Picker>
             </View>
             <View style={styles.submitExerciseButton}>
@@ -88,7 +95,6 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     inputTitle: {
-        fontWeight: "bold",
         marginLeft: 10
     },
     submitExerciseButton: {

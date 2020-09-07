@@ -4,23 +4,28 @@ const INITIAL_EXERCISE_STATE =
     [
         {
             name: "Pullups",
-            type: CategoryType.STRENGTH
+            type: CategoryType.STRENGTH,
+            id: 1
         },
         {
             name: "Pushups",
-            type: CategoryType.STRENGTH
+            type: CategoryType.STRENGTH,
+            id: 2
         },
         {
             name: "Squats",
-            type: CategoryType.STRENGTH
+            type: CategoryType.STRENGTH,
+            id: 3
         },
         {
             name: "Benchpress",
-            type: CategoryType.STRENGTH
+            type: CategoryType.STRENGTH,
+            id: 4
         },
         {
             name: "Dumbell one arm row",
-            type: CategoryType.STRENGTH
+            type: CategoryType.STRENGTH,
+            id: 5
         }
     ]
 
