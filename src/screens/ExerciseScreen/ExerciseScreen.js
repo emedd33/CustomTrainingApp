@@ -4,7 +4,8 @@ import { View, Text, TouchableOpacity, Button } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { AntDesign } from '@expo/vector-icons';
 
-import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
+import Modal from 'modal-react-native-web';
+
 import { Overlay } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
 import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
@@ -31,7 +32,7 @@ const ExerciseScreen = ({ navigation }) => {
         }
     }
     return (
-        <View style={{}}>
+        <View style={{ height: "100%" }}>
             {exercises.map((exercise, index) =>
                 <TouchableOpacity onPress={() => console.log("hei")} key={index} style={{
                     borderBottomColor: 'grey',
@@ -49,7 +50,6 @@ const ExerciseScreen = ({ navigation }) => {
                 </TouchableOpacity>
             )
             }
-            <FloatingActionButton action={() => navigation.navigate("AddExerciseScreen")} />
             <Overlay isVisible={isVisible} overlayStyle={{ width: "60%" }} onBackdropPress={() => setIsVisible(false)} ModalComponent={ModalInput}>
                 <View style={{ padding: 30 }}>
 

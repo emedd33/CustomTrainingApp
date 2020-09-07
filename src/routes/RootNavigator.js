@@ -13,7 +13,7 @@ const Drawer = createDrawerNavigator();
 const RootNavigator = () => {
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Routines" drawerContent={(props) => <DrawerContent {...props} />}>
+            <Drawer.Navigator initialRouteName="Exercises" drawerContent={(props) => <DrawerContent {...props} />}>
                 <Drawer.Screen name="Profile" component={ProfileStack} />
                 <Drawer.Screen name="Routines" component={RoutineStack} />
                 <Drawer.Screen name="Workouts" component={WorkoutStack} />
