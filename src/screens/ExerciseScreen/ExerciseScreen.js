@@ -32,18 +32,18 @@ const ExerciseScreen = ({ navigation }) => {
         }
     }
     return (
-        <View style={{ height: "100%" }}>
+        <View style={{ height: "100%", margin: 20 }}>
             {exercises.map((exercise, index) =>
                 <TouchableOpacity onPress={() => console.log("hei")} key={index} style={{
                     borderBottomColor: 'grey',
                     borderBottomWidth: 1,
                 }}>
-                    <View style={{ backgroundColor: renderBackgroundColor(index), height: 40, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
+                    <View style={{ height: 40, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
                         <Text style={{ marginLeft: 20 }}>{exercise.name}</Text>
                         <View style={{ marginRight: 20 }}>
 
                             <TouchableOpacity onPress={() => { setSelectedExercise(exercise); setIsVisible(true) }} style={null}>
-                                <AntDesign name="delete" size={24} color="black" />
+                                <AntDesign name="delete" size={24} color={Colors.APP_RED} />
                             </TouchableOpacity>
                         </View>
                     </View>

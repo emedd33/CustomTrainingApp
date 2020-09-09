@@ -10,7 +10,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": { 
+    "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "com.emedd33.customtrainingapp",
+      "versionCode": 1
     }
   }
 }

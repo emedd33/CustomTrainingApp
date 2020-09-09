@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteRoutine, addRoutine } from '../../redux/RoutineScreen/TypedActions';
+import { deleteRoutine, addRoutine, setSelectedRoutine } from '../../redux/RoutineScreen/TypedActions';
 import { AntDesign } from '@expo/vector-icons';
 import moment from 'moment';
 import Modal from 'modal-react-native-web';
@@ -11,7 +11,9 @@ import Colors from '../../assets/Colors/Colors';
 
 const RoutineScreen = ({ navigation }) => {
     const dispatch = useDispatch()
-    const routines = useSelector((state) => state.routines)
+    const routines = useSelector((state) => state.routines.routineList)
+    const selectedRoutine = useSelector((state) => state.routines.selectedRoutine)
+
 
     // Code for not giving error for modal in web browser
     let ModalInput;
@@ -22,7 +24,6 @@ const RoutineScreen = ({ navigation }) => {
 
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
-    const [selectedRoutine, setSelectedRoutine] = useState(null)
 
     function renderBackgroundColor(index) {
         if (index % 2 == 0) {
@@ -31,14 +32,18 @@ const RoutineScreen = ({ navigation }) => {
             return "white"
         }
     }
+    const navigateToRoutineDetail = (routine) => {
+        dispatch(setSelectedRoutine(routine))
+        navigation.navigate("RoutineDetailScreen")
+    }
     return (
-        <View style={{ height: "100%" }}>
+        <View style={{ height: "100%", marginTop: 20 }}>
             {
-                routines.map((routine) =>
+                routines.map((routine, index) =>
 
                     <TouchableOpacity style={styles.itemContainer} key={routine.id} onPress={() => console.log("hei")}>
-                        <TouchableOpacity onPress={() => console.log("hei")}>
-                            <View style={{ backgroundColor: renderBackgroundColor(routine.id), height: 50, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
+                        <TouchableOpacity onPress={() => navigateToRoutineDetail(routine)}>
+                            <View style={{ height: 50, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
                                 <View>
 
                                     <Text style={{ marginLeft: 20, fontSize: 15 }}>{routine.name}</Text>
@@ -47,8 +52,8 @@ const RoutineScreen = ({ navigation }) => {
                                 </View>
                                 <View style={{ marginRight: 20 }}>
 
-                                    <TouchableOpacity onPress={() => { setSelectedRoutine(routine); setIsDeleteModalVisible(true) }} style={null}>
-                                        <AntDesign name="delete" size={24} color="black" />
+                                    <TouchableOpacity onPress={() => { dispatch(setSelectedRoutine(routine)); setIsDeleteModalVisible(true) }} style={null}>
+                                        <AntDesign name="delete" size={24} color={Colors.APP_RED} />
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -98,6 +103,8 @@ const styles = StyleSheet.create({
     itemContainer: {
         borderBottomColor: 'grey',
         borderBottomWidth: 1,
+        marginLeft: 20,
+        marginRight: 20
     },
     itemSubContainer: {
         display: "flex",
