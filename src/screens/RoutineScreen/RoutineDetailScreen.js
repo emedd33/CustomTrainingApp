@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import Colors from '../../assets/Colors/Colors';
 import { Button as Button_rne, Overlay } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
-import { deleteRoutine, deleteExerciseFromRoutine } from '../../redux/RoutineScreen/TypedActions';
+import { deleteRoutine, deleteExerciseFromRoutine, updateRoutineName } from '../../redux/RoutineScreen/TypedActions';
 import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import OverlayModalConfirmDelete from '../../components/Atoms/OverlayModalConfirmDelete';
+import OverlayModalEditText from '../../components/Atoms/OverlayModalEditText';
 
 const RoutineDetailScreen = ({ navigation }) => {
     const dispatch = useDispatch()
@@ -36,7 +37,7 @@ const RoutineDetailScreen = ({ navigation }) => {
 
     return (
         <View style={{ height: "100%", display: "flex" }}>
-            <TouchableOpacity style={{ alignItems: "center", justifyContent: "center", flex: 1 }} onPress={() => setIsDeleteModalVisible(true)}>
+            <TouchableOpacity style={{ alignItems: "center", justifyContent: "center", flex: 1 }} onPress={() => seIsEditTitleModalVisible(true)}>
                 <Text style={{ fontSize: 30 }}>{routine.name}</Text>
             </TouchableOpacity>
             <View style={{ flex: 1, display: "flex", flexDirection: "row", height: "20%", justifyContent: "space-between", alignItems: "center" }}>
@@ -84,6 +85,12 @@ const RoutineDetailScreen = ({ navigation }) => {
                 onBackdropPress={() => setIsDeleteModalVisible(false)}
                 onCancelPress={() => setIsDeleteModalVisible(false)}
                 onOkPress={() => { submitDeleteItem() }} />
+            <OverlayModalEditText
+                text={routine.name}
+                onChange={(name) => dispatch(updateRoutineName(name))}
+                onBackdropPress={() => seIsEditTitleModalVisible(false)}
+                isVisible={isEditTitleModalVisible} />
+
         </View>
     );
 }
