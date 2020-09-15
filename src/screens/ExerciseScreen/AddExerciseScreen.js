@@ -48,7 +48,7 @@ const AddExerciseScreen = ({ navigation }) => {
         const [errorMessage, isSubmissionError] = checkSubmission()
         if (!isSubmissionError) {
             addExercise({ name: typedName, type: selectedCategory })
-            navigation.navigate("ExerciseScreen")
+            navigation.goBack()
         } else {
             Alert.alert(
                 'Please Fill out form',

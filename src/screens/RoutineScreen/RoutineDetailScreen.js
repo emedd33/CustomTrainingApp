@@ -72,7 +72,7 @@ const RoutineDetailScreen = ({ navigation }) => {
                     <ExerciseListItem exerciseName={exercise.name} onPressAction={() => console.log("hei ")} key={index} deleteAction={() => openDeleteItemOverlay({ type: "exercise", data: exercise })} />
                 )}
             </View>
-            <FloatingActionButton onPressAction={() => console.log("pressed")} />
+            <FloatingActionButton onPressAction={() => navigation.navigate("RoutineAddExercise")} />
             <OverlayModal
                 isVisible={isDeleteModalVisible}
                 selectedItemName={selectedItem.data ? selectedItem.data.name : null}

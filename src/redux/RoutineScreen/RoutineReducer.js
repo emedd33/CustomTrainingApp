@@ -29,7 +29,26 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
             }
         }
         case ADD_EXERCISE_TO_ROUTINE: {
-            return { ...state }
+            const newRoutineExerciseList = JSON.parse(JSON.stringify(state.selectedRoutine.exercises));
+            let newId = Math.max(...state.selectedRoutine.exercises.map(exercise => exercise.id)) + 1
+            newRoutineExerciseList.push(
+                {
+                    name: action.data.name,
+                    id: newId,
+                    type: action.data.type,
+                    sets: 3,
+                    reps: 8,
+                    weight: 0
+                })
+            const newSelectedRoutine = {
+                ...state.selectedRoutine,
+                exercises: newRoutineExerciseList
+            }
+            state.routineList.filter(routine => routine.id === state.selectedRoutine.id).map(routine => routine.exercises = newRoutineExerciseList)
+            return {
+                ...state,
+                selectedRoutine: newSelectedRoutine
+            }
         }
         case DELETE_EXERCISE_FROM_ROUTINE: {
             const newExerciseList = state.selectedRoutine.exercises.filter(exercise => exercise.id !== action.data)
