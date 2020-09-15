@@ -5,19 +5,16 @@ import Colors from '../../assets/Colors/Colors';
 import { Button as Button_rne } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 import { deleteRoutine, deleteExerciseFromRoutine } from '../../redux/RoutineScreen/TypedActions';
-import { Overlay } from 'react-native-elements';
-import Modal from 'modal-react-native-web';
+import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
+import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
+import OverlayModal from '../../components/Atoms/OverlayModal';
 
 const RoutineDetailScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const routine = useSelector((state) => state.routines.selectedRoutine)
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
     const [selectedItem, setSelectedItem] = useState({ type: routine, data: "" })
-    let ModalInput;
-    if (typeof document != 'undefined') {
-        ModalInput = Modal
-        ModalInput.setAppElement('body')
-    }
+
     const openDeleteItemOverlay = (item) => {
         setSelectedItem(item);
         setIsDeleteModalVisible(true)
@@ -72,39 +69,16 @@ const RoutineDetailScreen = ({ navigation }) => {
             <View style={{ flex: 4, padding: 20 }}>
                 <Text style={{ fontSize: 30, fontWeight: "bold", marginBottom: 30 }}>Exercises</Text>
                 {routine.exercises.map((exercise, index) =>
-                    <TouchableOpacity style={{
-                        borderBottomColor: 'grey',
-                        borderBottomWidth: 1,
-                        marginRight: 20
-                    }} key={routine.id} onPress={() => console.log("hei")}>
-                        <TouchableOpacity onPress={() => console.log("hei")}>
-                            <View style={{ height: 50, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
-                                <View>
-                                    <Text style={{ marginLeft: 20, fontSize: 15 }}>{exercise.name}</Text>
-                                </View>
-                                <View style={{ marginRight: 20 }}>
-
-                                    <TouchableOpacity onPress={() => openDeleteItemOverlay({ type: "exercise", data: exercise })} style={null}>
-                                        <AntDesign name="delete" size={24} color={Colors.APP_RED} />
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-                    </TouchableOpacity>
+                    <ExerciseListItem exerciseName={exercise.name} onPressAction={() => console.log("hei ")} key={index} deleteAction={() => openDeleteItemOverlay({ type: "exercise", data: exercise })} />
                 )}
             </View>
-
-            <Overlay isVisible={isDeleteModalVisible} overlayStyle={{ width: "60%" }} onBackdropPress={() => setIsDeleteModalVisible(false)} ModalComponent={ModalInput}>
-                <View style={{ padding: 30 }}>
-                    <Text style={{ marginBottom: 20, fontSize: 15 }}>Delete {selectedItem ? selectedItem.data.name : ""}?</Text>
-                    <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                        <Button title="Cancl" color="red" style={{ flex: 1 }} onPress={() => setIsDeleteModalVisible(false)} />
-                        <Button title="   Ok   " color={Colors.APP_GREEN} style={{ flex: 1, }} onPress={() => {
-                            submitDeleteItem()
-                        }} />
-                    </View>
-                </View>
-            </Overlay>
+            <FloatingActionButton onPressAction={() => console.log("pressed")} />
+            <OverlayModal
+                isVisible={isDeleteModalVisible}
+                selectedItemName={selectedItem.data ? selectedItem.data.name : null}
+                onBackdropPress={() => setIsDeleteModalVisible(false)}
+                onCancelPress={() => setIsDeleteModalVisible(false)}
+                onOkPress={() => { submitDeleteItem() }} />
         </View>
     );
 }

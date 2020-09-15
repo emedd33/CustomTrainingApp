@@ -32,7 +32,19 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
             return { ...state }
         }
         case DELETE_EXERCISE_FROM_ROUTINE: {
-            return { ...state }
+            const newExerciseList = state.selectedRoutine.exercises.filter(exercise => exercise.id !== action.data)
+            const newRoutine = { ...state.selectedRoutine, exercises: newExerciseList }
+            return {
+                ...state,
+                selectedRoutine: newRoutine,
+                routineList: state.routineList.map(routine => {
+                    if (routine.id === newRoutine.id) {
+                        return newRoutine
+                    }
+                    return routine
+                })
+
+            }
         }
         case SET_SELECTED_ROUTINE: {
             return {

@@ -9,6 +9,9 @@ import Modal from 'modal-react-native-web';
 import { Overlay, Icon } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
 import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
+import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
+import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
+import OverlayModal from '../../components/Atoms/OverlayModal';
 
 
 const ExerciseScreen = ({ navigation }) => {
@@ -34,53 +37,22 @@ const ExerciseScreen = ({ navigation }) => {
     return (
         <View style={{ height: "100%", margin: 20 }}>
             {exercises.map((exercise, index) =>
-                <TouchableOpacity onPress={() => console.log("hei")} key={index} style={{
-                    borderBottomColor: 'grey',
-                    borderBottomWidth: 1,
-                }}>
-                    <View style={{ height: 40, display: "flex", alignItems: "center", justifyContent: "space-between", flexDirection: "row" }}>
-                        <Text style={{ marginLeft: 20 }}>{exercise.name}</Text>
-                        <View style={{ marginRight: 20 }}>
-
-                            <TouchableOpacity onPress={() => { setSelectedExercise(exercise); setIsVisible(true) }} style={null}>
-                                <AntDesign name="delete" size={24} color={Colors.APP_RED} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </TouchableOpacity>
+                <ExerciseListItem
+                    exerciseName={exercise.name}
+                    key={index}
+                    onPressAction={() => console.log("hei exercise")}
+                    deleteAction={() => { setSelectedExercise(exercise); setIsVisible(true) }} />
             )
             }
-            <Overlay isVisible={isVisible} overlayStyle={{ width: "60%" }} onBackdropPress={() => setIsVisible(false)} ModalComponent={ModalInput}>
-                <View style={{ padding: 30 }}>
+            <OverlayModal
+                onBackdropPress={() => setIsVisible(false)}
+                onCancelPress={() => setIsVisible(false)}
+                onOkPress={() => { setIsVisible(false); dispatch(deleteExercise(selectedExercise.id)) }}
+                selectedItemName={selectedExercise ? selectedExercise.name : null}
+                isVisible={isVisible} />
 
-                    <Text style={{ marginBottom: 20, fontSize: 15 }}>Delete {selectedExercise ? selectedExercise.name : ""}?</Text>
-                    <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
-                        <Button title="Cancel" color={Colors.APP_RED} style={{ marginLeft: 10 }} onPress={() => setIsVisible(false)} />
-                        <Button title="   Ok   " color={Colors.APP_GREEN} style={{ marginLeft: 10 }} onPress={() => { setIsVisible(false); dispatch(deleteExercise(selectedExercise.id)) }} />
-                    </View>
-                </View>
-            </Overlay>
-            <TouchableOpacity
-                style={{
-                    borderWidth: 1,
-                    borderColor: 'rgba(0,0,0,0.2)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 70,
-                    position: 'absolute',
-                    bottom: 10,
-                    right: 10,
-                    height: 70,
-                    backgroundColor: Colors.APP_RED,
-                    borderRadius: 100,
-                }}
-                onPress={() => navigation.navigate("AddExerciseScreen")}
-            >
-                <View>
+            <FloatingActionButton onPressAction={() => navigation.navigate("AddExerciseScreen")} />
 
-                    <AntDesign name="plus" size={24} color="black" />
-                </View>
-            </TouchableOpacity>
         </View >
     );
 }

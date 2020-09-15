@@ -7,6 +7,7 @@ import moment from 'moment';
 import Modal from 'modal-react-native-web';
 import { Overlay } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
+import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 
 
 const RoutineScreen = ({ navigation }) => {
@@ -65,28 +66,7 @@ const RoutineScreen = ({ navigation }) => {
                     </View>
                 </View>
             </Overlay>
-            <TouchableOpacity
-                style={{
-                    borderWidth: 1,
-                    borderColor: 'rgba(0,0,0,0.2)',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 70,
-                    position: 'absolute',
-                    bottom: 10,
-                    right: 10,
-                    height: 70,
-                    backgroundColor: Colors.APP_RED,
-                    borderRadius: 100,
-                }}
-                onPress={() => dispatch(addRoutine())}
-            >
-                <View>
-
-                    <AntDesign name="plus" size={24} color="black" />
-                </View>
-            </TouchableOpacity>
-
+            <FloatingActionButton onPressAction={() => dispatch(addRoutine())} />
         </View>
     );
 }
