@@ -11,7 +11,7 @@ import Colors from '../../assets/Colors/Colors';
 import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
 import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
-import OverlayModal from '../../components/Atoms/OverlayModal';
+import OverlayModalConfirmDelete from '../../components/Atoms/OverlayModalConfirmDelete';
 
 
 const ExerciseScreenContent = ({ navigation, addExerciseToRoutineAction }) => {
@@ -43,7 +43,7 @@ const ExerciseScreenContent = ({ navigation, addExerciseToRoutineAction }) => {
                     deleteAction={() => { setSelectedExercise(exercise); setIsVisible(true) }} />
             )
             }
-            <OverlayModal
+            <OverlayModalConfirmDelete
                 onBackdropPress={() => setIsVisible(false)}
                 onCancelPress={() => setIsVisible(false)}
                 onOkPress={() => { setIsVisible(false); dispatch(deleteExercise(selectedExercise.id)) }}

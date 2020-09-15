@@ -11,7 +11,7 @@ import Colors from '../../assets/Colors/Colors';
 import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
 import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
-import OverlayModal from '../../components/Atoms/OverlayModal';
+import OverlayModalConfirmDelete from '../../components/Atoms/OverlayModalConfirmDelete';
 import ExerciseScreenContent from '../../components/Exercise/ExerciseContent';
 
 

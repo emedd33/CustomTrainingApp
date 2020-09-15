@@ -22,3 +22,10 @@ export const deleteExerciseFromRoutine = (routine) => ({
     type: Actions.DELETE_EXERCISE_FROM_ROUTINE,
     data: routine
 })
+export const updateRoutineName = (name, routineId) => ({
+    type: Actions.UPDATE_ROUTINE_NAME,
+    data: {
+        name: name,
+        routinId: routineId
+    }
+})

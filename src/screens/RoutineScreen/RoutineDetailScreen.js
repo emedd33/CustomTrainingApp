@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import Colors from '../../assets/Colors/Colors';
-import { Button as Button_rne } from 'react-native-elements';
+import { Button as Button_rne, Overlay } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 import { deleteRoutine, deleteExerciseFromRoutine } from '../../redux/RoutineScreen/TypedActions';
 import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
-import OverlayModal from '../../components/Atoms/OverlayModal';
+import OverlayModalConfirmDelete from '../../components/Atoms/OverlayModalConfirmDelete';
 
 const RoutineDetailScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const routine = useSelector((state) => state.routines.selectedRoutine)
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
+    const [isEditTitleModalVisible, seIsEditTitleModalVisible] = useState(false)
+
     const [selectedItem, setSelectedItem] = useState({ type: routine, data: "" })
 
     const openDeleteItemOverlay = (item) => {
@@ -34,6 +36,9 @@ const RoutineDetailScreen = ({ navigation }) => {
 
     return (
         <View style={{ height: "100%", display: "flex" }}>
+            <TouchableOpacity style={{ alignItems: "center", justifyContent: "center", flex: 1 }} onPress={() => setIsDeleteModalVisible(true)}>
+                <Text style={{ fontSize: 30 }}>{routine.name}</Text>
+            </TouchableOpacity>
             <View style={{ flex: 1, display: "flex", flexDirection: "row", height: "20%", justifyContent: "space-between", alignItems: "center" }}>
                 <View style={{ flex: 3, height: "100%", justifyContent: "center" }}>
                     <Button_rne
@@ -73,7 +78,7 @@ const RoutineDetailScreen = ({ navigation }) => {
                 )}
             </View>
             <FloatingActionButton onPressAction={() => navigation.navigate("RoutineAddExercise")} />
-            <OverlayModal
+            <OverlayModalConfirmDelete
                 isVisible={isDeleteModalVisible}
                 selectedItemName={selectedItem.data ? selectedItem.data.name : null}
                 onBackdropPress={() => setIsDeleteModalVisible(false)}

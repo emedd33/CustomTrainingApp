@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 import { Overlay } from 'react-native-elements';
 import Modal from 'modal-react-native-web';
 import Colors from '../../assets/Colors/Colors';
-const OverlayModal = ({ onBackdropPress, onCancelPress, onOkPress, isVisible, selectedItemName }) => {
+const OverlayModalConfirmDelete = ({ onBackdropPress, onCancelPress, onOkPress, isVisible, selectedItemName }) => {
     let ModalInput;
     if (typeof document != 'undefined') {
         ModalInput = Modal
@@ -22,4 +22,4 @@ const OverlayModal = ({ onBackdropPress, onCancelPress, onOkPress, isVisible, se
     );
 }
 
-export default OverlayModal;
+export default OverlayModalConfirmDelete;

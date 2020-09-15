@@ -1,5 +1,6 @@
-import { DELETE_ROUTINE, ADD_ROUTINE, SET_SELECTED_ROUTINE, ADD_EXERCISE_TO_ROUTINE, DELETE_EXERCISE_FROM_ROUTINE } from "./Actions";
+import { DELETE_ROUTINE, ADD_ROUTINE, SET_SELECTED_ROUTINE, ADD_EXERCISE_TO_ROUTINE, DELETE_EXERCISE_FROM_ROUTINE, UPDATE_ROUTINE_NAME } from "./Actions";
 import dayjs from "dayjs";
+import updateRutineListFromRoutine from "./updateRoutineState"
 
 const { default: INITIAL_ROUTINE_STATE } = require("./InitialRoutineState");
 
@@ -44,25 +45,30 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
                 ...state.selectedRoutine,
                 exercises: newRoutineExerciseList
             }
-            state.routineList.filter(routine => routine.id === state.selectedRoutine.id).map(routine => routine.exercises = newRoutineExerciseList)
             return {
                 ...state,
-                selectedRoutine: newSelectedRoutine
+                selectedRoutine: newSelectedRoutine,
+                routineList: updateRutineListFromRoutine(newRoutineExerciseList, state.routineList)
             }
         }
         case DELETE_EXERCISE_FROM_ROUTINE: {
             const newExerciseList = state.selectedRoutine.exercises.filter(exercise => exercise.id !== action.data)
-            const newRoutine = { ...state.selectedRoutine, exercises: newExerciseList }
+            const updatedRoutine = { ...state.selectedRoutine, exercises: newExerciseList }
             return {
                 ...state,
-                selectedRoutine: newRoutine,
-                routineList: state.routineList.map(routine => {
-                    if (routine.id === newRoutine.id) {
-                        return newRoutine
-                    }
-                    return routine
-                })
-
+                selectedRoutine: updatedRoutine,
+                routineList: updateRutineListFromRoutine(updatedRoutine, state.routineList)
+            }
+        }
+        case UPDATE_ROUTINE_NAME: {
+            const updatedRoutine = {
+                ...state.selectedRoutine,
+                name: action.data.name
+            }
+            return {
+                ...state,
+                selectedRoutine: updatedRoutine,
+                routineList: updateRutineListFromRoutine(updatedRoutine, state.routineList)
             }
         }
         case SET_SELECTED_ROUTINE: {
