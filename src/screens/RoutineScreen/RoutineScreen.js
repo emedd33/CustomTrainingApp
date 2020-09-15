@@ -3,11 +3,11 @@ import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteRoutine, addRoutine, setSelectedRoutine } from '../../redux/RoutineScreen/TypedActions';
 import { AntDesign } from '@expo/vector-icons';
-import moment from 'moment';
 import Modal from 'modal-react-native-web';
 import { Overlay } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
+import dayjs from 'dayjs';
 
 
 const RoutineScreen = ({ navigation }) => {
@@ -31,6 +31,9 @@ const RoutineScreen = ({ navigation }) => {
         dispatch(setSelectedRoutine(routine))
         navigation.navigate("RoutineDetailScreen")
     }
+    var relativeTime = require('dayjs/plugin/relativeTime')
+    dayjs.extend(relativeTime)
+
     return (
         <View style={{ height: "100%", marginTop: 20 }}>
             {
@@ -42,7 +45,7 @@ const RoutineScreen = ({ navigation }) => {
                                 <View>
 
                                     <Text style={{ marginLeft: 20, fontSize: 15 }}>{routine.name}</Text>
-                                    {routine.lastDone ? <Text style={{ marginLeft: 25, color: Colors.APP_GRAY }}>{"Last done: " + moment(routine.lastDone, "YYYY-MM-DD").fromNow()}</Text> : null}
+                                    {routine.lastDone ? <Text style={{ marginLeft: 25, color: Colors.APP_GRAY }}>{"Last done: " + dayjs(routine.lastDone).fromNow()}</Text> : null}
 
                                 </View>
                                 <View style={{ marginRight: 20 }}>
