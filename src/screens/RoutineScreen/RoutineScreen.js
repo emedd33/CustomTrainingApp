@@ -25,13 +25,7 @@ const RoutineScreen = ({ navigation }) => {
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
 
-    function renderBackgroundColor(index) {
-        if (index % 2 == 0) {
-            return "#DEDEDE"
-        } else {
-            return "white"
-        }
-    }
+
     const navigateToRoutineDetail = (routine) => {
         dispatch(setSelectedRoutine(routine))
         navigation.navigate("RoutineDetailScreen")

@@ -1,4 +1,4 @@
-import { DELETE_ROUTINE, ADD_ROUTINE, SET_SELECTED_ROUTINE } from "./Actions";
+import { DELETE_ROUTINE, ADD_ROUTINE, SET_SELECTED_ROUTINE, ADD_EXERCISE_TO_ROUTINE, DELETE_EXERCISE_FROM_ROUTINE } from "./Actions";
 import moment from 'moment';
 
 const { default: INITIAL_ROUTINE_STATE } = require("./InitialRoutineState");
@@ -27,6 +27,12 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
                 ...state,
                 routineList: newRoutineList
             }
+        }
+        case ADD_EXERCISE_TO_ROUTINE: {
+            return { ...state }
+        }
+        case DELETE_EXERCISE_FROM_ROUTINE: {
+            return { ...state }
         }
         case SET_SELECTED_ROUTINE: {
             return {
