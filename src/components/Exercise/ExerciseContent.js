@@ -8,11 +8,11 @@ import Modal from 'modal-react-native-web';
 
 import { Overlay, Icon } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
-import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
+import { deleteExercise } from '../../redux/ExercicseReducer/TypedActions';
 import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import OverlayModalConfirmDelete from '../../components/Atoms/OverlayModalConfirmDelete';
-import { getExercises } from '../../redux/ExercicseScreen/ExerciseReducer';
+import { getExercises } from '../../redux/ExercicseReducer';
 
 
 const ExerciseScreenContent = ({ navigation, addExerciseToRoutineAction }) => {

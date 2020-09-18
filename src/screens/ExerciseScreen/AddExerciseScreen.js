@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button, Alert, Picker } from 'react-native';
 import { Input, Icon } from 'react-native-elements';
 import CategoryType from '../../assets/StringConst/CategoryType'
 import { useDispatch } from 'react-redux';
-import { ADD_EXERCISE, DELETE_EXERCISE } from '../../redux/ExercicseScreen/Actions';
+import { ADD_EXERCISE, DELETE_EXERCISE } from '../../redux/ExercicseReducer/Actions';
 
 const categories = [
     { label: CategoryType.STRENGTH, value: CategoryType.STRENGTH, icon: () => <Icon name="flag" size={18} color="#900" /> },

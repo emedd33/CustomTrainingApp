@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, Image } from 'react-native';
 import IconBox from '../../components/Atoms/IconBox';
 import { useSelector } from 'react-redux';
-import { getProfileFirstName } from '../../redux/ProfileScreen/ProfileReducer';
+import { getProfileFirstName } from '../../redux/ProfileReducer';
 const ProfileScreen = () => {
   const backgroundImage = require("../../assets/images/profile_background.png");
   const pullUpIcon = <Image style={styles.icon} source={require('../../assets/icons/pullup_icon.jpg')} />

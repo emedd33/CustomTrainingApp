@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteRoutine, addRoutine, setSelectedRoutine } from '../../redux/RoutineScreen/TypedActions';
+import { deleteRoutine, addRoutine, setSelectedRoutine } from '../../redux/RoutineReducer/TypedActions';
 import { AntDesign } from '@expo/vector-icons';
 import Modal from 'modal-react-native-web';
 import { Overlay } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import dayjs from 'dayjs';
-import { getSelectedRoutine, getRoutineList } from '../../redux/RoutineScreen/RoutineReducer';
+import { getSelectedRoutine, getRoutineList } from '../../redux/RoutineReducer';
 
 
 const RoutineScreen = ({ navigation }) => {

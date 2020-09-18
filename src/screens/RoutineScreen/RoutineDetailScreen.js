@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Colors from '../../assets/Colors/Colors';
 import { Button as Button_rne, Overlay } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
-import { deleteRoutine, deleteExerciseFromRoutine, updateRoutineName } from '../../redux/RoutineScreen/TypedActions';
+import { deleteRoutine, deleteExerciseFromRoutine, updateRoutineName } from '../../redux/RoutineReducer/TypedActions';
 import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import OverlayModalConfirmDelete from '../../components/Atoms/OverlayModalConfirmDelete';

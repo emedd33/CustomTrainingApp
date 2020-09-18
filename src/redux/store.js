@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from "redux";
-import ExerciseReducer from "./ExercicseScreen/ExerciseReducer";
-import ProfileReducer from "./ProfileScreen/ProfileReducer";
-import RoutineReducer from "./RoutineScreen/RoutineReducer";
+import ExerciseReducer from "./ExercicseReducer";
+import ProfileReducer from "./ProfileReducer";
+import RoutineReducer from "./RoutineReducer";
 
 
 // rootReducer which is used to create store for App.js
