@@ -82,3 +82,5 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
     }
 }
 export default RoutineReducer
+export const getSelectedRoutine = (state) => state.routines.selectedRoutine
+export const getRoutineList = (state) => state.routines.routineList

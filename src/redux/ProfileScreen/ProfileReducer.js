@@ -7,3 +7,4 @@ const ProfileReducer = (state = INITIAL_HOME_STATE, action) => {
     }
 }
 export default ProfileReducer
+export const getProfileFirstName = (state) => state.profile.firstName

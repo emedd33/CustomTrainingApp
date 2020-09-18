@@ -8,12 +8,13 @@ import { Overlay } from 'react-native-elements';
 import Colors from '../../assets/Colors/Colors';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import dayjs from 'dayjs';
+import { getSelectedRoutine, getRoutineList } from '../../redux/RoutineScreen/RoutineReducer';
 
 
 const RoutineScreen = ({ navigation }) => {
     const dispatch = useDispatch()
-    const routines = useSelector((state) => state.routines.routineList)
-    const selectedRoutine = useSelector((state) => state.routines.selectedRoutine)
+    const routines = useSelector(getRoutineList)
+    const selectedRoutine = useSelector(getSelectedRoutine)
 
 
     // Code for not giving error for modal in web browser

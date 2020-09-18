@@ -17,3 +17,4 @@ const ExerciseReducer = (state = INITIAL_EXERCISE_STATE, action) => {
     }
 }
 export default ExerciseReducer
+export const getExercises = (state) => state.exercises

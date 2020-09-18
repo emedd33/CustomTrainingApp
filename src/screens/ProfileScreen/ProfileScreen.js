@@ -2,11 +2,12 @@ import React from 'react';
 import { View, Text, ImageBackground, StyleSheet, Image } from 'react-native';
 import IconBox from '../../components/Atoms/IconBox';
 import { useSelector } from 'react-redux';
+import { getProfileFirstName } from '../../redux/ProfileScreen/ProfileReducer';
 const ProfileScreen = () => {
   const backgroundImage = require("../../assets/images/profile_background.png");
   const pullUpIcon = <Image style={styles.icon} source={require('../../assets/icons/pullup_icon.jpg')} />
   const calendarIcon = <Image style={styles.icon} source={require('../../assets/icons/calendar_icon.png')} />
-  const firstName = useSelector((state) => state.profile.firstName)
+  const firstName = useSelector(getProfileFirstName)
 
   return (
     <ImageBackground source={backgroundImage} style={styles.container} >

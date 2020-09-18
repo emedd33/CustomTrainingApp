@@ -12,11 +12,12 @@ import { deleteExercise } from '../../redux/ExercicseScreen/TypedActions';
 import ExerciseListItem from '../../components/Exercise/ExerciseListItem';
 import FloatingActionButton from '../../components/Atoms/FloatingActionButton';
 import OverlayModalConfirmDelete from '../../components/Atoms/OverlayModalConfirmDelete';
+import { getExercises } from '../../redux/ExercicseScreen/ExerciseReducer';
 
 
 const ExerciseScreenContent = ({ navigation, addExerciseToRoutineAction }) => {
     const dispatch = useDispatch();
-    const exercises = useSelector((state) => state.exercises)
+    const exercises = useSelector(getExercises)
     const [isVisible, setIsVisible] = useState(false)
 
     // Code for not giving error for modal in web browser
