@@ -8,7 +8,7 @@ export const deleteRoutine = (routine) => ({
     data: routine
 })
 
-export const setSelectedRoutine = (routine) => ({
+export const setSelectedRoutineId = (routine) => ({
     type: Actions.SET_SELECTED_ROUTINE,
     data: routine
 })

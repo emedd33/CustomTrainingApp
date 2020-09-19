@@ -1,7 +1,7 @@
 import CategoryType from "../../assets/StringConst/CategoryType"
 
 const INITIAL_ROUTINE_STATE = {
-    selectedRoutine: null,
+    selectedRoutineId: null,
     routineList:
         [{
             id: 1,

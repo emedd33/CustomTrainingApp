@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteRoutine, addRoutine, setSelectedRoutine } from '../../redux/RoutineReducer/TypedActions';
+import { deleteRoutine, addRoutine, setSelectedRoutineId } from '../../redux/RoutineReducer/TypedActions';
 import { AntDesign } from '@expo/vector-icons';
 import Modal from 'modal-react-native-web';
 import { Overlay } from 'react-native-elements';
@@ -14,7 +14,7 @@ import { getSelectedRoutine, getRoutineList } from '../../redux/RoutineReducer';
 const RoutineScreen = ({ navigation }) => {
     const dispatch = useDispatch()
     const routines = useSelector(getRoutineList)
-    const selectedRoutine = useSelector(getSelectedRoutine)
+    const selectedRoutineId = useSelector(getSelectedRoutine)
 
 
     // Code for not giving error for modal in web browser
@@ -29,7 +29,7 @@ const RoutineScreen = ({ navigation }) => {
 
 
     const navigateToRoutineDetail = (routine) => {
-        dispatch(setSelectedRoutine(routine))
+        dispatch(setSelectedRoutineId(routine.id))
         navigation.navigate("RoutineDetailScreen")
     }
     var relativeTime = require('dayjs/plugin/relativeTime')
@@ -51,7 +51,7 @@ const RoutineScreen = ({ navigation }) => {
                                 </View>
                                 <View style={{ marginRight: 20 }}>
 
-                                    <TouchableOpacity onPress={() => { dispatch(setSelectedRoutine(routine)); setIsDeleteModalVisible(true) }} style={null}>
+                                    <TouchableOpacity onPress={() => { dispatch(setSelectedRoutineId(routine.id)); setIsDeleteModalVisible(true) }} style={null}>
                                         <AntDesign name="delete" size={24} color={Colors.APP_RED} />
                                     </TouchableOpacity>
                                 </View>
@@ -63,10 +63,10 @@ const RoutineScreen = ({ navigation }) => {
 
             <Overlay isVisible={isDeleteModalVisible} overlayStyle={{ width: "60%" }} onBackdropPress={() => setIsDeleteModalVisible(false)} ModalComponent={ModalInput}>
                 <View style={{ padding: 30 }}>
-                    <Text style={{ marginBottom: 20, fontSize: 15 }}>Delete {selectedRoutine ? selectedRoutine.name : ""}?</Text>
+                    <Text style={{ marginBottom: 20, fontSize: 15 }}>Delete {selectedRoutineId ? selectedRoutineId.name : ""}?</Text>
                     <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>
                         <Button title="Cancel" color={Colors.APP_RED} style={{ flex: 1 }} onPress={() => setIsDeleteModalVisible(false)} />
-                        <Button title="   Ok   " color={Colors.APP_GREEN} style={{ flex: 1, }} onPress={() => { setIsDeleteModalVisible(false); dispatch(deleteRoutine(selectedRoutine.id)) }} />
+                        <Button title="   Ok   " color={Colors.APP_GREEN} style={{ flex: 1, }} onPress={() => { setIsDeleteModalVisible(false); dispatch(deleteRoutine(selectedRoutineId.id)) }} />
                     </View>
                 </View>
             </Overlay>

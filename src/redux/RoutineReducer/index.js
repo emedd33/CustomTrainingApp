@@ -30,8 +30,8 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
             }
         }
         case ADD_EXERCISE_TO_ROUTINE: {
-            const newRoutineExerciseList = JSON.parse(JSON.stringify(state.selectedRoutine.exercises));
-            let newId = Math.max(...state.selectedRoutine.exercises.map(exercise => exercise.id)) + 1
+            const newRoutineExerciseList = JSON.parse(JSON.stringify(getSelectedRoutine(state).exercises));
+            const newId = Math.max(...getSelectedRoutine(state).exercises.map(exercise => exercise.id)) + 1
             newRoutineExerciseList.push(
                 {
                     name: action.data.name,
@@ -41,40 +41,31 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
                     reps: 8,
                     weight: 0
                 })
-            const newSelectedRoutine = {
-                ...state.selectedRoutine,
-                exercises: newRoutineExerciseList
-            }
+            const newSelectedRoutine = { ...getSelectedRoutine(state), exercises: newRoutineExerciseList }
             return {
                 ...state,
-                selectedRoutine: newSelectedRoutine,
-                routineList: updateRutineListFromRoutine(newRoutineExerciseList, state.routineList)
+                routineList: updateRutineListFromRoutine(newSelectedRoutine, state.routineList)
             }
         }
         case DELETE_EXERCISE_FROM_ROUTINE: {
-            const newExerciseList = state.selectedRoutine.exercises.filter(exercise => exercise.id !== action.data)
-            const updatedRoutine = { ...state.selectedRoutine, exercises: newExerciseList }
+            const newExerciseList = getSelectedRoutine(state).exercises.filter(exercise => exercise.id !== action.data)
+            const updatedRoutine = { ...getSelectedRoutine(state), exercises: newExerciseList }
             return {
                 ...state,
-                selectedRoutine: updatedRoutine,
                 routineList: updateRutineListFromRoutine(updatedRoutine, state.routineList)
             }
         }
         case UPDATE_ROUTINE_NAME: {
-            const updatedRoutine = {
-                ...state.selectedRoutine,
-                name: action.data.name
-            }
+            const updatedRoutine = { ...getSelectedRoutine(state), name: action.data.name }
             return {
                 ...state,
-                selectedRoutine: updatedRoutine,
                 routineList: updateRutineListFromRoutine(updatedRoutine, state.routineList)
             }
         }
         case SET_SELECTED_ROUTINE: {
             return {
                 ...state,
-                selectedRoutine: action.data
+                selectedRoutineId: action.data
             }
         }
         default:
@@ -82,5 +73,14 @@ const RoutineReducer = (state = INITIAL_ROUTINE_STATE, action) => {
     }
 }
 export default RoutineReducer
-export const getSelectedRoutine = (state) => state.routines.selectedRoutine
+export const getSelectedRoutine = (state) => {
+    if (state.selectedRoutineId) {
+        return state.routineList.filter(routine => routine.id === state.selectedRoutineId)[0]
+    }
+    if (state.routines.selectedRoutineId) {
+        return state.routines.routineList.filter(routine => routine.id === state.routines.selectedRoutineId)[0]
+    }
+    return null
+}
+
 export const getRoutineList = (state) => state.routines.routineList
